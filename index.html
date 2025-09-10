@@ -1,119 +1,153 @@
-
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>متجر الشحن</title>
+  <title>متجر الألعاب</title>
   <style>
     body {
       margin: 0;
-      font-family: Arial, sans-serif;
-      background: linear-gradient(to bottom right, #ff0000, #ff7f00);
-      color: #fff;
-      text-align: center;
+      font-family: "Cairo", sans-serif;
+      background: #0d1b2a;
+      color: white;
     }
 
+    /* الهيدر */
     header {
-      background: rgba(0, 0, 0, 0.6);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
       padding: 15px;
-      font-size: 22px;
-      font-weight: bold;
+      background: #1b263b;
+    }
+    header h1 {
+      font-size: 18px;
+      margin: 0;
     }
 
-    h2 {
-      margin: 20px 0;
-    }
-
-    .container {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 20px;
-      padding: 20px;
-    }
-
-    .card {
-      background: #fff;
-      color: #000;
+    /* البانر */
+    .banner {
+      background: linear-gradient(135deg, #ff512f, #f09819);
+      color: white;
+      padding: 25px;
+      text-align: center;
       border-radius: 12px;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-      padding: 20px;
-      transition: transform 0.2s;
+      margin: 15px;
     }
 
+    /* العناوين */
+    .section-title {
+      margin: 20px 10px 10px;
+      font-weight: bold;
+      font-size: 20px;
+      color: #ffd60a;
+    }
+
+    /* المنتجات */
+    .products {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+      gap: 15px;
+      padding: 10px;
+    }
+    .card {
+      background: #1b263b;
+      border-radius: 12px;
+      padding: 10px;
+      text-align: center;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.4);
+      transition: 0.3s;
+    }
     .card:hover {
       transform: scale(1.05);
     }
-
     .card img {
-      width: 80px;
-      height: 80px;
-      margin-bottom: 10px;
+      width: 100%;
+      border-radius: 8px;
     }
-
     .card h3 {
-      margin: 10px 0;
-      font-size: 20px;
+      margin: 10px 0 5px;
+      font-size: 16px;
     }
-
     .card p {
       font-size: 14px;
-      margin: 10px 0;
+      color: #ccc;
     }
-
-    .btn {
-      display: inline-block;
-      background: linear-gradient(to right, #ff0000, #ff7f00);
-      color: white;
-      padding: 10px 20px;
+    .card button {
+      margin-top: 10px;
+      background: linear-gradient(135deg, #ff512f, #f09819);
+      border: none;
+      padding: 10px;
       border-radius: 8px;
-      text-decoration: none;
-      font-weight: bold;
-      transition: background 0.3s;
-    }
-
-    .btn:hover {
-      background: linear-gradient(to right, #ff7f00, #ff0000);
-    }
-
-    footer {
-      margin-top: 40px;
-      padding: 15px;
-      background: rgba(0, 0, 0, 0.6);
+      color: white;
       font-size: 14px;
+      cursor: pointer;
+    }
+
+    /* شريط التنقل السفلي */
+    .bottom-nav {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      display: flex;
+      justify-content: space-around;
+      background: #1b263b;
+      padding: 10px 0;
+      border-top: 1px solid #333;
+    }
+    .bottom-nav a {
+      text-decoration: none;
+      color: white;
+      font-size: 14px;
+      text-align: center;
     }
   </style>
 </head>
 <body>
 
-  <header>🎮 متجر الشحن</header>
+  <!-- الهيدر -->
+  <header>
+    <h1>🎮 متجر الشحن</h1>
+    <div>🛒</div>
+  </header>
 
-  <h2>اختر لعبتك للشحن</h2>
+  <!-- بانر -->
+  <div class="banner">
+    <h2>يمكنك الآن شحن جميع الألعاب</h2>
+    <p>أفضل وأرخص موقع للشحن</p>
+  </div>
 
-  <div class="container">
+  <!-- الأكثر مبيعاً -->
+  <div class="section-title">الأكثر مبيعاً ⚡</div>
+  <div class="products">
     <div class="card">
-      <img src="https://img.icons8.com/color/96/free-fire.png" alt="Free Fire">
+      <img src="https://via.placeholder.com/150x100" alt="Free Fire">
       <h3>Free Fire</h3>
-      <p>اشحن جواهر فري فاير بسرعة وسهولة</p>
-      <a href="order.html" class="btn">اشحن الآن</a>
+      <p>شحن جواهر بسرعة</p>
+      <button>اشحن الآن</button>
     </div>
-
     <div class="card">
-      <img src="https://img.icons8.com/color/96/call-of-duty.png" alt="Call of Duty">
-      <h3>Call of Duty</h3>
-      <p>اشحن لحسابك CP مباشرة</p>
-      <a href="order.html" class="btn">اشحن الآن</a>
-    </div>
-
-    <div class="card">
-      <img src="https://img.icons8.com/color/96/pubg.png" alt="PUBG Mobile">
+      <img src="https://via.placeholder.com/150x100" alt="PUBG">
       <h3>PUBG Mobile</h3>
-      <p>اشحن شدات ببجي بكل سهولة</p>
-      <a href="order.html" class="btn">اشحن الآن</a>
+      <p>شحن شدات بكل سهولة</p>
+      <button>اشحن الآن</button>
+    </div>
+    <div class="card">
+      <img src="https://via.placeholder.com/150x100" alt="COD">
+      <h3>Call of Duty</h3>
+      <p>شحن CP مباشر</p>
+      <button>اشحن الآن</button>
     </div>
   </div>
 
-  <footer>© 2025 متجر الشحن</footer>
+  <!-- شريط التنقل السفلي -->
+  <div class="bottom-nav">
+    <a href="#">👤 حسابي</a>
+    <a href="#">💳 تغذية</a>
+    <a href="#">📦 طلباتي</a>
+    <a href="#">💬 الدعم</a>
+  </div>
 
 </body>
 </html>
