@@ -106,6 +106,46 @@
       font-size: 14px;
       text-align: center;
     }
+
+    /* نافذة الطلب */
+    #popup {
+      display: none;
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: rgba(0,0,0,0.7);
+      justify-content: center;
+      align-items: center;
+    }
+    #popup .box {
+      background: #1b263b;
+      padding: 20px;
+      border-radius: 12px;
+      width: 90%;
+      max-width: 400px;
+    }
+    #popup input {
+      width: 100%;
+      padding: 10px;
+      margin: 5px 0;
+      border-radius: 8px;
+      border: none;
+    }
+    #popup button {
+      width: 100%;
+      padding: 10px;
+      margin-top: 10px;
+      border: none;
+      border-radius: 8px;
+      color: white;
+      cursor: pointer;
+    }
+    #popup .pay {
+      background: linear-gradient(135deg, #ff512f, #f09819);
+    }
+    #popup .cancel {
+      background: #333;
+    }
   </style>
 </head>
 <body>
@@ -129,19 +169,19 @@
       <img src="https://via.placeholder.com/150x100" alt="Free Fire">
       <h3>Free Fire</h3>
       <p>شحن جواهر بسرعة</p>
-      <button>اشحن الآن</button>
+      <button onclick="openPopup('Free Fire')">اشحن الآن</button>
     </div>
     <div class="card">
       <img src="https://via.placeholder.com/150x100" alt="PUBG">
       <h3>PUBG Mobile</h3>
       <p>شحن شدات بكل سهولة</p>
-      <button>اشحن الآن</button>
+      <button onclick="openPopup('PUBG Mobile')">اشحن الآن</button>
     </div>
     <div class="card">
       <img src="https://via.placeholder.com/150x100" alt="COD">
       <h3>Call of Duty</h3>
       <p>شحن CP مباشر</p>
-      <button>اشحن الآن</button>
+      <button onclick="openPopup('Call of Duty')">اشحن الآن</button>
     </div>
   </div>
 
@@ -149,9 +189,68 @@
   <div class="bottom-nav">
     <a href="#">👤 حسابي</a>
     <a href="#">💳 تغذية</a>
-    <a href="#">📦 طلباتي</a>
+    <a href="order.html">📦 طلباتي</a>
     <a href="#">💬 الدعم</a>
   </div>
 
+  <!-- نافذة إدخال الطلب -->
+  <div id="popup">
+    <div class="box">
+      <h3 style="margin-top:0; text-align:center;">📝 تفاصيل الطلب</h3>
+      <input id="name" type="text" placeholder="الاسم">
+      <input id="phone" type="text" placeholder="رقم التواصل">
+      <input id="gameid" type="text" placeholder="الأيدي">
+      <button class="pay" onclick="sendToWhatsApp()">التقدم للدفع</button>
+      <button class="cancel" onclick="closePopup()">إلغاء</button>
+    </div>
+  </div>
+
+  <!-- الأكواد -->
+  <script>
+    let selectedProduct = "";
+
+    function openPopup(product) {
+      selectedProduct = product;
+      document.getElementById("popup").style.display = "flex";
+    }
+    function closePopup() {
+      document.getElementById("popup").style.display = "none";
+    }
+
+    function sendToWhatsApp() {
+      let name = document.getElementById("name").value;
+      let phone = document.getElementById("phone").value;
+      let gameid = document.getElementById("gameid").value;
+
+      if (!name || !phone || !gameid) {
+        alert("من فضلك املأ جميع الحقول!");
+        return;
+      }
+
+      // حفظ الطلب
+      let orders = JSON.parse(localStorage.getItem("orders")) || [];
+      orders.push({
+        product: selectedProduct,
+        name: name,
+        phone: phone,
+        gameid: gameid,
+        date: new Date().toLocaleString()
+      });
+      localStorage.setItem("orders", JSON.stringify(orders));
+
+      // إرسال رسالة واتساب
+      let message = `مرحباً، عندي طلب جديد:
+🛒 المنتج: ${selectedProduct}
+👤 الاسم: ${name}
+📞 رقم التواصل: ${phone}
+🎮 الأيدي: ${gameid}`;
+
+      let url = `https://wa.me/249XXXXXXXXX?text=${encodeURIComponent(message)}`;
+      window.open(url, "_blank");
+
+      closePopup();
+    }
+  </script>
+
 </body>
-      </html>
+        </html>
