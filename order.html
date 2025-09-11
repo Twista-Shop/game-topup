@@ -4,138 +4,86 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>طلباتي</title>
-  
-  <!-- استدعاء خط Tajawal -->
+
+  <!-- خط Tajawal -->
   <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700&display=swap" rel="stylesheet">
-  
+
   <style>
     body {
       margin: 0;
       font-family: "Tajawal", sans-serif;
       background: #0d1b2a;
       color: white;
+      padding: 20px;
     }
 
-    /* الهيدر */
-    header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 15px;
-      background: #1b263b;
-    }
-    header h1 {
-      font-size: 18px;
-      margin: 0;
+    h1 {
+      text-align: center;
+      margin-bottom: 20px;
     }
 
-    /* الكروت */
-    .orders {
-      padding: 15px;
-    }
-    .order-card {
+    .order {
       background: #1b263b;
-      border-radius: 12px;
       padding: 15px;
+      border-radius: 10px;
       margin-bottom: 15px;
       box-shadow: 0 2px 5px rgba(0,0,0,0.4);
     }
-    .order-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 10px;
-    }
-    .order-header h3 {
-      margin: 0;
-      font-size: 16px;
-      color: #ffd60a;
-    }
-    .status {
-      padding: 5px 10px;
-      border-radius: 8px;
-      font-size: 13px;
-    }
-    .pending {
-      background: #f09819;
-      color: white;
-    }
-    .completed {
-      background: #4caf50;
-      color: white;
-    }
-    .order-body {
-      font-size: 14px;
-      color: #ccc;
-    }
-    .order-body p {
+
+    .order p {
       margin: 5px 0;
     }
 
-    /* شريط التنقل السفلي */
-    .bottom-nav {
-      position: fixed;
-      bottom: 0;
-      left: 0;
-      width: 100%;
-      display: flex;
-      justify-content: space-around;
-      background: #1b263b;
-      padding: 10px 0;
-      border-top: 1px solid #333;
-    }
-    .bottom-nav a {
-      text-decoration: none;
-      color: white;
-      font-size: 14px;
+    .empty {
       text-align: center;
+      margin-top: 50px;
+      font-size: 18px;
+      color: #ccc;
+    }
+
+    /* زر العودة */
+    .back-btn {
+      display: block;
+      text-align: center;
+      margin: 20px auto;
+      background: linear-gradient(135deg, #ff512f, #f09819);
+      padding: 10px 20px;
+      border-radius: 8px;
+      color: white;
+      text-decoration: none;
+      width: fit-content;
     }
   </style>
 </head>
 <body>
 
-  <!-- الهيدر -->
-  <header>
-    <h1>📦 طلباتي</h1>
-    <div>🛒</div>
-  </header>
+  <h1>📦 طلباتي</h1>
+  <div id="orders"></div>
 
-  <!-- الطلبات -->
-  <div class="orders">
+  <a href="index.html" class="back-btn">⬅️ العودة للمتجر</a>
 
-    <div class="order-card">
-      <div class="order-header">
-        <h3>Free Fire - 110 جوهرة</h3>
-        <span class="status completed">✅ مكتمل</span>
-      </div>
-      <div class="order-body">
-        <p>رقم الطلب: #12345</p>
-        <p>السعر: 3500 ج.س</p>
-        <p>التاريخ: 11-09-2025</p>
-      </div>
-    </div>
+  <script>
+    // جلب الطلبات من localStorage
+    let orders = JSON.parse(localStorage.getItem("orders")) || [];
+    let ordersDiv = document.getElementById("orders");
 
-    <div class="order-card">
-      <div class="order-header">
-        <h3>PUBG - 60 شدة</h3>
-        <span class="status pending">⏳ قيد المعالجة</span>
-      </div>
-      <div class="order-body">
-        <p>رقم الطلب: #12346</p>
-        <p>السعر: 2500 ج.س</p>
-        <p>التاريخ: 10-09-2025</p>
-      </div>
-    </div>
-
-  </div>
-
-  <!-- شريط التنقل السفلي -->
-  <div class="bottom-nav">
-    <a href="index.html">🏠 الرئيسية</a>
-    <a href="#">💳 تغذية</a>
-    <a href="order.html">📦 طلباتي</a>
-    <a href="#">💬 الدعم</a>
-  </div>
+    if (orders.length === 0) {
+      ordersDiv.innerHTML = "<p class='empty'>لا توجد طلبات بعد.</p>";
+    } else {
+      orders.forEach(order => {
+        let div = document.createElement("div");
+        div.classList.add("order");
+        div.innerHTML = `
+          <p>🛒 المنتج: ${order.product}</p>
+          <p>👤 الاسم: ${order.name}</p>
+          <p>📞 الهاتف: ${order.phone}</p>
+          <p>🎮 الأيدي: ${order.gameid}</p>
+          <p>⏰ التاريخ: ${order.date}</p>
+        `;
+        ordersDiv.appendChild(div);
+      });
+    }
+  </script>
 
 </body>
-  </html>
+</html>￼Enter
