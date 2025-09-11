@@ -16,7 +16,6 @@
       color: white;
     }
 
-    /* الهيدر */
     header {
       display: flex;
       justify-content: space-between;
@@ -24,12 +23,8 @@
       padding: 15px;
       background: #1b263b;
     }
-    header h1 {
-      font-size: 18px;
-      margin: 0;
-    }
+    header h1 { font-size: 18px; margin: 0; }
 
-    /* البانر */
     .banner {
       background: linear-gradient(135deg, #ff512f, #f09819);
       color: white;
@@ -39,7 +34,6 @@
       margin: 15px;
     }
 
-    /* العناوين */
     .section-title {
       margin: 20px 10px 10px;
       font-weight: bold;
@@ -47,7 +41,6 @@
       color: #ffd60a;
     }
 
-    /* المنتجات */
     .products {
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
@@ -62,21 +55,10 @@
       box-shadow: 0 2px 5px rgba(0,0,0,0.4);
       transition: 0.3s;
     }
-    .card:hover {
-      transform: scale(1.05);
-    }
-    .card img {
-      width: 100%;
-      border-radius: 8px;
-    }
-    .card h3 {
-      margin: 10px 0 5px;
-      font-size: 16px;
-    }
-    .card p {
-      font-size: 14px;
-      color: #ccc;
-    }
+    .card:hover { transform: scale(1.05); }
+    .card img { width: 100%; border-radius: 8px; }
+    .card h3 { margin: 10px 0 5px; font-size: 16px; }
+    .card p { font-size: 14px; color: #ccc; }
     .card button {
       margin-top: 10px;
       background: linear-gradient(135deg, #ff512f, #f09819);
@@ -88,11 +70,9 @@
       cursor: pointer;
     }
 
-    /* شريط التنقل السفلي */
     .bottom-nav {
       position: fixed;
-      bottom: 0;
-      left: 0;
+      bottom: 0; left: 0;
       width: 100%;
       display: flex;
       justify-content: space-around;
@@ -140,29 +120,22 @@
       color: white;
       cursor: pointer;
     }
-    #popup .pay {
-      background: linear-gradient(135deg, #ff512f, #f09819);
-    }
-    #popup .cancel {
-      background: #333;
-    }
+    #popup .pay { background: linear-gradient(135deg, #ff512f, #f09819); }
+    #popup .cancel { background: #333; }
   </style>
 </head>
 <body>
 
-  <!-- الهيدر -->
   <header>
     <h1>🎮 متجر الشحن</h1>
     <div>🛒</div>
   </header>
 
-  <!-- بانر -->
   <div class="banner">
     <h2>يمكنك الآن شحن جميع الألعاب</h2>
     <p>أفضل وأرخص موقع للشحن</p>
   </div>
 
-  <!-- الأكثر مبيعاً -->
   <div class="section-title">الأكثر مبيعاً ⚡</div>
   <div class="products">
     <div class="card">
@@ -185,7 +158,6 @@
     </div>
   </div>
 
-  <!-- شريط التنقل السفلي -->
   <div class="bottom-nav">
     <a href="#">👤 حسابي</a>
     <a href="#">💳 تغذية</a>
@@ -193,7 +165,7 @@
     <a href="#">💬 الدعم</a>
   </div>
 
-  <!-- نافذة إدخال الطلب -->
+  <!-- نافذة الطلب -->
   <div id="popup">
     <div class="box">
       <h3 style="margin-top:0; text-align:center;">📝 تفاصيل الطلب</h3>
@@ -205,7 +177,6 @@
     </div>
   </div>
 
-  <!-- الأكواد -->
   <script>
     let selectedProduct = "";
 
@@ -227,9 +198,13 @@
         return;
       }
 
-      // حفظ الطلب
+      // رقم الطلب (ID)
       let orders = JSON.parse(localStorage.getItem("orders")) || [];
+      let orderId = "ORD-" + (orders.length + 1);
+
+      // حفظ الطلب
       orders.push({
+        id: orderId,
         product: selectedProduct,
         name: name,
         phone: phone,
@@ -238,14 +213,15 @@
       });
       localStorage.setItem("orders", JSON.stringify(orders));
 
-      // إرسال رسالة واتساب
-      let message = `مرحباً، عندي طلب جديد:
+      // رسالة واتساب
+      let message = `📦 طلب جديد:
+🆔 رقم الطلب: ${orderId}
 🛒 المنتج: ${selectedProduct}
 👤 الاسم: ${name}
 📞 رقم التواصل: ${phone}
 🎮 الأيدي: ${gameid}`;
 
-      let url = `https://wa.me/249XXXXXXXXX?text=${encodeURIComponent(message)}`;
+      let url = `https://wa.me/message/D6U5UW6XZE3ZN1?text=${encodeURIComponent(message)}`;
       window.open(url, "_blank");
 
       closePopup();
@@ -253,4 +229,4 @@
   </script>
 
 </body>
-        </html>
+  </html>
