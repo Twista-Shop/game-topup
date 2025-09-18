@@ -41,11 +41,12 @@
       color: #ffd60a;
     }
 
+    /* المنتجات بأعمدة أوضح */
     .products {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
-      gap: 15px;
-      padding: 10px;
+      grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+      gap: 20px;
+      padding: 20px;
     }
     .card {
       background: #1b263b;
@@ -70,21 +71,34 @@
       cursor: pointer;
     }
 
+    /* شريط التنقل العصري */
     .bottom-nav {
       position: fixed;
-      bottom: 0; left: 0;
-      width: 100%;
+      bottom: 20px; /* رفعناه عن الحافة */
+      left: 50%;
+      transform: translateX(-50%);
+      width: 90%;
+      background: rgba(27, 38, 59, 0.6); /* شفاف */
+      backdrop-filter: blur(12px); /* تأثير البلور */
+      border-radius: 20px;
       display: flex;
       justify-content: space-around;
-      background: #1b263b;
-      padding: 10px 0;
-      border-top: 1px solid #333;
+      align-items: center;
+      padding: 12px 0;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.3);
     }
     .bottom-nav a {
       text-decoration: none;
       color: white;
-      font-size: 14px;
+      font-size: 13px;
       text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .bottom-nav a i {
+      font-size: 18px;
+      margin-bottom: 4px;
     }
 
     /* نافذة الطلب */
@@ -158,11 +172,12 @@
     </div>
   </div>
 
+  <!-- شريط التنقل العصري -->
   <div class="bottom-nav">
-    <a href="#">👤 حسابي</a>
-    <a href="#">💳 تغذية</a>
-    <a href="order.html">📦 طلباتي</a>
-    <a href="#">💬 الدعم</a>
+    <a href="#"><i>👤</i>حسابي</a>
+    <a href="#"><i>💳</i>تغذية</a>
+    <a href="order.html"><i>📦</i>طلباتي</a>
+    <a href="#"><i>💬</i>الدعم</a>
   </div>
 
   <!-- نافذة الطلب -->
@@ -198,11 +213,9 @@
         return;
       }
 
-      // رقم الطلب (ID)
       let orders = JSON.parse(localStorage.getItem("orders")) || [];
       let orderId = "ORD-" + (orders.length + 1);
 
-      // حفظ الطلب
       orders.push({
         id: orderId,
         product: selectedProduct,
@@ -213,7 +226,6 @@
       });
       localStorage.setItem("orders", JSON.stringify(orders));
 
-      // رسالة واتساب
       let message = `📦 طلب جديد:
 🆔 رقم الطلب: ${orderId}
 🛒 المنتج: ${selectedProduct}
@@ -229,4 +241,4 @@
   </script>
 
 </body>
-  </html>
+      </html>
