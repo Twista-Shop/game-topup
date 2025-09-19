@@ -3,87 +3,109 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>طلباتي</title>
-
-  <!-- خط Tajawal -->
+  <title>إتمام الطلب</title>
   <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700&display=swap" rel="stylesheet">
-
   <style>
     body {
       margin: 0;
       font-family: "Tajawal", sans-serif;
       background: #0d1b2a;
       color: white;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
       padding: 20px;
     }
-
-    h1 {
-      text-align: center;
-      margin-bottom: 20px;
-    }
-
-    .order {
+    .form-box {
       background: #1b263b;
-      padding: 15px;
-      border-radius: 10px;
-      margin-bottom: 15px;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.4);
+      padding: 20px;
+      border-radius: 12px;
+      width: 100%;
+      max-width: 400px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.4);
     }
-
-    .order p {
-      margin: 5px 0;
-    }
-
-    .empty {
+    h2 {
+      margin-top: 0;
       text-align: center;
-      margin-top: 50px;
-      font-size: 18px;
-      color: #ccc;
+      color: #ffd60a;
     }
-
-    /* زر العودة */
-    .back-btn {
-      display: block;
-      text-align: center;
-      margin: 20px auto;
-      background: linear-gradient(135deg, #ff512f, #f09819);
-      padding: 10px 20px;
+    input {
+      width: 100%;
+      padding: 12px;
+      margin: 10px 0;
+      border-radius: 8px;
+      border: none;
+    }
+    button {
+      width: 100%;
+      padding: 12px;
+      margin-top: 10px;
+      border: none;
       border-radius: 8px;
       color: white;
-      text-decoration: none;
-      width: fit-content;
+      font-size: 15px;
+      cursor: pointer;
     }
+    .pay { background: linear-gradient(135deg, #ff512f, #f09819); }
+    .cancel { background: #333; }
   </style>
 </head>
 <body>
 
-  <h1>📦 طلباتي</h1>
-  <div id="orders"></div>
-
-  <a href="index.html" class="back-btn">⬅️ العودة للمتجر</a>
+  <div class="form-box">
+    <h2>📝 تفاصيل الطلب</h2>
+    <p id="productName" style="text-align:center; margin-bottom:15px;"></p>
+    <input id="name" type="text" placeholder="الاسم">
+    <input id="phone" type="text" placeholder="رقم التواصل">
+    <input id="gameid" type="text" placeholder="الأيدي / ملاحظات">
+    <button class="pay" onclick="sendToWhatsApp()">التقدم للدفع</button>
+    <button class="cancel" onclick="history.back()">رجوع</button>
+  </div>
 
   <script>
-    // جلب الطلبات من localStorage
-    let orders = JSON.parse(localStorage.getItem("orders")) || [];
-    let ordersDiv = document.getElementById("orders");
+    // جلب المنتج من الرابط
+    const urlParams = new URLSearchParams(window.location.search);
+    const product = urlParams.get("product") || "منتج";
 
-    if (orders.length === 0) {
-      ordersDiv.innerHTML = "<p class='empty'>لا توجد طلبات بعد.</p>";
-    } else {
-      orders.forEach(order => {
-        let div = document.createElement("div");
-        div.classList.add("order");
-        div.innerHTML = `
-          <p>🛒 المنتج: ${order.product}</p>
-          <p>👤 الاسم: ${order.name}</p>
-          <p>📞 الهاتف: ${order.phone}</p>
-          <p>🎮 الأيدي: ${order.gameid}</p>
-          <p>⏰ التاريخ: ${order.date}</p>
-        `;
-        ordersDiv.appendChild(div);
+    document.getElementById("productName").innerText = "🛒 المنتج: " + product;
+
+    function sendToWhatsApp() {
+      let name = document.getElementById("name").value;
+      let phone = document.getElementById("phone").value;
+      let gameid = document.getElementById("gameid").value;
+
+      if (!name || !phone || !gameid) {
+        alert("من فضلك املأ جميع الحقول!");
+        return;
+      }
+
+      // رقم الطلب
+      let orders = JSON.parse(localStorage.getItem("orders")) || [];
+      let orderId = "ORD-" + (orders.length + 1);
+
+      orders.push({
+        id: orderId,
+        product: product,
+        name: name,
+        phone: phone,
+        gameid: gameid,
+        date: new Date().toLocaleString()
       });
+      localStorage.setItem("orders", JSON.stringify(orders));
+
+      // رسالة واتساب
+      let message = `📦 طلب جديد:
+🆔 رقم الطلب: ${orderId}
+🛒 المنتج: ${product}
+👤 الاسم: ${name}
+📞 رقم التواصل: ${phone}
+🎮 الأيدي / الملاحظات: ${gameid}`;
+
+      let url = `https://wa.me/message/D6U5UW6XZE3ZN1?text=${encodeURIComponent(message)}`;
+      window.open(url, "_blank");
     }
   </script>
 
 </body>
-</html>￼Enter
+</html>
