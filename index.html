@@ -1,88 +1,221 @@
-<!DOCTYPE html>
-<html lang="ar" dir="rtl">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Twista Store</title>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.rtl.min.css" rel="stylesheet">
-  <link rel="stylesheet" href="style.css">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css">
-</head>
-<body>
-
-<!-- الهيدر -->
-<header class="header d-flex align-items-center justify-content-between px-3 py-2 shadow-sm bg-white">
-  <div class="cart position-relative">
-    <i class="bi bi-cart2 fs-4"></i>
-    <span class="count">0</span>
-  </div>
-  <div class="d-flex align-items-center gap-2">
-    <div class="currency">🇸🇩 SDG</div>
-    <i class="bi bi-search fs-5"></i>
-  </div>
-  <div class="logo">
-    <img src="images/logo.png" alt="Twista Store" height="30">
-  </div>
-</header>
-
-<!-- بانر -->
-<section class="banner my-3 text-center">
-  <img src="images/banner.jpg" class="img-fluid rounded" alt="banner">
-</section>
-
-<!-- زر القسم -->
-<div class="container text-center my-3">
-  <button class="btn btn-primary rounded-pill px-4">الشحن المباشر</button>
-</div>
-
-<!-- المنتجات -->
-<section class="products container my-4">
-  <div class="row g-3">
-    <div class="col-6">
-      <div class="product-card text-center p-2 rounded shadow-sm">
-        <img src="images/pubg.jpg" class="img-fluid rounded" alt="Pubg">
-        <h6 class="mt-2">Pubg Mobile</h6>
-      </div>
-    </div>
-    <div class="col-6">
-      <div class="product-card text-center p-2 rounded shadow-sm">
-        <img src="images/freefire.jpg" class="img-fluid rounded" alt="FreeFire">
-        <h6 class="mt-2">FreeFire</h6>
-      </div>
-    </div>
-    <div class="col-6">
-      <div class="product-card text-center p-2 rounded shadow-sm">
-        <img src="images/cod.jpg" class="img-fluid rounded" alt="Call of Duty">
-        <h6 class="mt-2">Call Of Duty</h6>
-      </div>
-    </div>
-    <div class="col-6">
-      <div class="product-card text-center p-2 rounded shadow-sm">
-        <img src="images/diamond.jpg" class="img-fluid rounded" alt="FreeFire Level">
-        <h6 class="mt-2">مستوى فري فاير</h6>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- شريط التنقل السفلي -->
-<nav class="bottom-nav d-flex justify-content-around align-items-center py-2 bg-white shadow-lg fixed-bottom">
-  <a href="#" class="text-center">
-    <i class="bi bi-list"></i><br><small>القائمة</small>
-  </a>
-  <a href="#" class="text-center">
-    <i class="bi bi-house-door-fill"></i><br><small>الرئيسية</small>
-  </a>
-  <a href="#" class="text-center">
-    <i class="bi bi-box-arrow-in-right"></i><br><small>تسجيل</small>
-  </a>
-  <a href="#" class="text-center">
-    <i class="bi bi-bag-check"></i><br><small>طلباتي</small>
-  </a>
-  <a href="#" class="text-center">
-    <i class="bi bi-chat-dots"></i><br><small>الدعم</small>
-  </a>
-</nav>
-
-</body>
-  </html>
+<!DOCTYPE html>  <html lang="ar" dir="rtl">  
+<head>  
+  <meta charset="UTF-8">  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">  
+  <title>متجر الألعاب</title>    <!-- استدعاء خط Tajawal -->    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700&display=swap" rel="stylesheet">    <style>  
+    body {  
+      margin: 0;  
+      font-family: "Tajawal", sans-serif;  
+      background: #0d1b2a;  
+      color: white;  
+    }  
+  
+    header {  
+      display: flex;  
+      justify-content: space-between;  
+      align-items: center;  
+      padding: 15px;  
+      background: #1b263b;  
+    }  
+    header h1 { font-size: 18px; margin: 0; }  
+  
+    .banner {  
+      background: linear-gradient(135deg, #ff512f, #f09819);  
+      color: white;  
+      padding: 25px;  
+      text-align: center;  
+      border-radius: 12px;  
+      margin: 15px;  
+    }  
+  
+    .section-title {  
+      margin: 20px 10px 10px;  
+      font-weight: bold;  
+      font-size: 20px;  
+      color: #ffd60a;  
+    }  
+  
+    /* المنتجات بأعمدة أوضح */  
+    .products {  
+      display: grid;  
+      grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));  
+      gap: 20px;  
+      padding: 20px;  
+    }  
+    .card {  
+      background: #1b263b;  
+      border-radius: 12px;  
+      padding: 10px;  
+      text-align: center;  
+      box-shadow: 0 2px 5px rgba(0,0,0,0.4);  
+      transition: 0.3s;  
+    }  
+    .card:hover { transform: scale(1.05); }  
+    .card img { width: 100%; border-radius: 8px; }  
+    .card h3 { margin: 10px 0 5px; font-size: 16px; }  
+    .card p { font-size: 14px; color: #ccc; }  
+    .card button {  
+      margin-top: 10px;  
+      background: linear-gradient(135deg, #ff512f, #f09819);  
+      border: none;  
+      padding: 10px;  
+      border-radius: 8px;  
+      color: white;  
+      font-size: 14px;  
+      cursor: pointer;  
+    }  
+  
+    /* شريط التنقل العصري */  
+    .bottom-nav {  
+      position: fixed;  
+      bottom: 20px; /* رفعناه عن الحافة */  
+      left: 50%;  
+      transform: translateX(-50%);  
+      width: 90%;  
+      background: rgba(27, 38, 59, 0.6); /* شفاف */  
+      backdrop-filter: blur(12px); /* تأثير البلور */  
+      border-radius: 20px;  
+      display: flex;  
+      justify-content: space-around;  
+      align-items: center;  
+      padding: 12px 0;  
+      box-shadow: 0 4px 20px rgba(0,0,0,0.3);  
+    }  
+    .bottom-nav a {  
+      text-decoration: none;  
+      color: white;  
+      font-size: 13px;  
+      text-align: center;  
+      display: flex;  
+      flex-direction: column;  
+      align-items: center;  
+    }  
+    .bottom-nav a i {  
+      font-size: 18px;  
+      margin-bottom: 4px;  
+    }  
+  
+    /* نافذة الطلب */  
+    #popup {  
+      display: none;  
+      position: fixed;  
+      top: 0; left: 0;  
+      width: 100%; height: 100%;  
+      background: rgba(0,0,0,0.7);  
+      justify-content: center;  
+      align-items: center;  
+    }  
+    #popup .box {  
+      background: #1b263b;  
+      padding: 20px;  
+      border-radius: 12px;  
+      width: 90%;  
+      max-width: 400px;  
+    }  
+    #popup input {  
+      width: 100%;  
+      padding: 10px;  
+      margin: 5px 0;  
+      border-radius: 8px;  
+      border: none;  
+    }  
+    #popup button {  
+      width: 100%;  
+      padding: 10px;  
+      margin-top: 10px;  
+      border: none;  
+      border-radius: 8px;  
+      color: white;  
+      cursor: pointer;  
+    }  
+    #popup .pay { background: linear-gradient(135deg, #ff512f, #f09819); }  
+    #popup .cancel { background: #333; }  
+  </style>  </head>  
+<body>    <header>  
+    <h1>🎮 متجر الشحن</h1>  
+    <div>🛒</div>  
+  </header>    <div class="banner">  
+    <h2>يمكنك الآن شحن جميع الألعاب</h2>  
+    <p>أفضل وأرخص موقع للشحن</p>  
+  </div>    <div class="section-title">الأكثر مبيعاً ⚡</div>  
+  <div class="products">  
+    <div class="card">  
+      <img src="https://via.placeholder.com/150x100" alt="Free Fire">  
+      <h3>Free Fire</h3>  
+      <p>شحن جواهر بسرعة</p>  
+      <button onclick="openPopup('Free Fire')">اشحن الآن</button>  
+    </div>  
+    <div class="card">  
+      <img src="https://via.placeholder.com/150x100" alt="PUBG">  
+      <h3>PUBG Mobile</h3>  
+      <p>شحن شدات بكل سهولة</p>  
+      <button onclick="openPopup('PUBG Mobile')">اشحن الآن</button>  
+    </div>  
+    <div class="card">  
+      <img src="https://via.placeholder.com/150x100" alt="COD">  
+      <h3>Call of Duty</h3>  
+      <p>شحن CP مباشر</p>  
+      <button onclick="openPopup('Call of Duty')">اشحن الآن</button>  
+    </div>  
+  </div>    <!-- شريط التنقل العصري -->    <div class="bottom-nav">  
+    <a href="#"><i>👤</i>حسابي</a>  
+    <a href="#"><i>💳</i>تغذية</a>  
+    <a href="order.html"><i>📦</i>طلباتي</a>  
+    <a href="#"><i>💬</i>الدعم</a>  
+  </div>    <!-- نافذة الطلب -->    <div id="popup">  
+    <div class="box">  
+      <h3 style="margin-top:0; text-align:center;">📝 تفاصيل الطلب</h3>  
+      <input id="name" type="text" placeholder="الاسم">  
+      <input id="phone" type="text" placeholder="رقم التواصل">  
+      <input id="gameid" type="text" placeholder="الأيدي">  
+      <button class="pay" onclick="sendToWhatsApp()">التقدم للدفع</button>  
+      <button class="cancel" onclick="closePopup()">إلغاء</button>  
+    </div>  
+  </div>    <script>  
+    let selectedProduct = "";  
+  
+    function openPopup(product) {  
+      selectedProduct = product;  
+      document.getElementById("popup").style.display = "flex";  
+    }  
+    function closePopup() {  
+      document.getElementById("popup").style.display = "none";  
+    }  
+  
+    function sendToWhatsApp() {  
+      let name = document.getElementById("name").value;  
+      let phone = document.getElementById("phone").value;  
+      let gameid = document.getElementById("gameid").value;  
+  
+      if (!name || !phone || !gameid) {  
+        alert("من فضلك املأ جميع الحقول!");  
+        return;  
+      }  
+  
+      let orders = JSON.parse(localStorage.getItem("orders")) || [];  
+      let orderId = "ORD-" + (orders.length + 1);  
+  
+      orders.push({  
+        id: orderId,  
+        product: selectedProduct,  
+        name: name,  
+        phone: phone,  
+        gameid: gameid,  
+        date: new Date().toLocaleString()  
+      });  
+      localStorage.setItem("orders", JSON.stringify(orders));  
+  
+      let message = `📦 طلب جديد:  
+🆔 رقم الطلب: ${orderId}  
+🛒 المنتج: ${selectedProduct}  
+👤 الاسم: ${name}  
+📞 رقم التواصل: ${phone}  
+🎮 الأيدي: ${gameid}`;  
+  
+      let url = `https://wa.me/message/D6U5UW6XZE3ZN1?text=${encodeURIComponent(message)}`;  
+      window.open(url, "_blank");  
+  
+      closePopup();  
+    }  
+  </script>  </body>  
+        </html>
