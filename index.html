@@ -1,101 +1,59 @@
-<style>
-  body {
-    margin: 0;
-    font-family: "Tajawal", sans-serif;
-    background: #0d1b2a;
-    color: white;
-  }
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Twista Store</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
 
-  header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 15px;
-    background: #1b263b;
-  }
-  header h1 { font-size: 18px; margin: 0; }
+  <!-- شريط التنقل -->
+  <header class="navbar">
+    <div class="logo">Twista Store</div>
+    <nav>
+      <ul>
+        <li><a href="index.html">الرئيسية</a></li>
+        <li><a href="#categories">الأقسام</a></li>
+        <li><a href="order.html">طلباتي</a></li>
+      </ul>
+    </nav>
+  </header>
 
-  .banner {
-    background: linear-gradient(135deg, #ff512f, #f09819);
-    color: white;
-    padding: 20px;
-    text-align: center;
-    border-radius: 12px;
-    margin: 15px;
-  }
+  <!-- قسم العنوان -->
+  <section class="hero">
+    <h1>الشحن المباشر</h1>
+  </section>
 
-  .section-title {
-    margin: 20px 15px 10px;
-    font-weight: bold;
-    font-size: 20px;
-    color: #ffd60a;
-  }
+  <!-- الأقسام -->
+  <section id="categories" class="categories">
+    <h2>الأقسام</h2>
+    <div class="grid">
+      <div class="card">
+        <img src="images/pubg.jpg" alt="Pubg Mobile">
+        <h3>Pubg Mobile</h3>
+        <a href="order.html" class="btn">إشحن الآن</a>
+      </div>
 
-  /* شكل البطاقات الجديد */
-  .products {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
-    gap: 15px;
-    padding: 15px;
-  }
-  .card {
-    background: #1b263b;
-    border: 1px solid #2c3e50;
-    border-radius: 16px;
-    text-align: center;
-    padding: 10px;
-    transition: 0.3s;
-  }
-  .card img {
-    width: 100%;
-    border-radius: 12px;
-    margin-bottom: 8px;
-  }
-  .card h3 {
-    font-size: 15px;
-    margin: 5px 0;
-  }
-  .card p {
-    font-size: 13px;
-    color: #ccc;
-    margin: 0;
-  }
-  .card button {
-    margin-top: 10px;
-    background: linear-gradient(135deg, #ff512f, #f09819);
-    border: none;
-    padding: 10px;
-    border-radius: 8px;
-    color: white;
-    font-size: 14px;
-    cursor: pointer;
-    width: 100%;
-  }
-  .card:hover {
-    transform: scale(1.03);
-  }
+      <div class="card">
+        <img src="images/freefire.jpg" alt="FreeFire">
+        <h3>Free Fire</h3>
+        <a href="order.html" class="btn">إشحن الآن</a>
+      </div>
 
-  /* شريط التنقل */
-  .bottom-nav {
-    position: fixed;
-    bottom: 0; left: 0;
-    width: 100%;
-    background: #1b263b;
-    display: flex;
-    justify-content: space-around;
-    border-top: 1px solid #333;
-    padding: 8px 0;
-  }
-  .bottom-nav a {
-    text-decoration: none;
-    color: white;
-    font-size: 13px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-  .bottom-nav a i {
-    font-size: 20px;
-    margin-bottom: 4px;
-  }
-</style>
+      <div class="card">
+        <img src="images/cod.jpg" alt="Call of Duty">
+        <h3>Call Of Duty</h3>
+        <a href="order.html" class="btn">إشحن الآن</a>
+      </div>
+
+      <div class="card">
+        <img src="images/design.jpg" alt="تصميم جرافيك">
+        <h3>تصميم جرافيك</h3>
+        <a href="order.html" class="btn">أطلب الآن</a>
+      </div>
+    </div>
+  </section>
+
+</body>
+</html>
