@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>متجر الألعاب</title>
   
-  <!-- استدعاء خط Tajawal -->
+  <!-- خط Tajawal -->
   <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700&display=swap" rel="stylesheet">
   
   <style>
@@ -41,7 +41,7 @@
       color: #ffd60a;
     }
 
-    /* المنتجات بأعمدة أوضح */
+    /* المنتجات */
     .products {
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
@@ -74,12 +74,12 @@
     /* شريط التنقل العصري */
     .bottom-nav {
       position: fixed;
-      bottom: 20px; /* رفعناه عن الحافة */
+      bottom: 20px;
       left: 50%;
       transform: translateX(-50%);
       width: 90%;
-      background: rgba(27, 38, 59, 0.6); /* شفاف */
-      backdrop-filter: blur(12px); /* تأثير البلور */
+      background: rgba(27, 38, 59, 0.6);
+      backdrop-filter: blur(12px);
       border-radius: 20px;
       display: flex;
       justify-content: space-around;
@@ -100,79 +100,69 @@
       font-size: 18px;
       margin-bottom: 4px;
     }
-
-    /* نافذة الطلب */
-    #popup {
-      display: none;
-      position: fixed;
-      top: 0; left: 0;
-      width: 100%; height: 100%;
-      background: rgba(0,0,0,0.7);
-      justify-content: center;
-      align-items: center;
-    }
-    #popup .box {
-      background: #1b263b;
-      padding: 20px;
-      border-radius: 12px;
-      width: 90%;
-      max-width: 400px;
-    }
-    #popup input {
-      width: 100%;
-      padding: 10px;
-      margin: 5px 0;
-      border-radius: 8px;
-      border: none;
-    }
-    #popup button {
-      width: 100%;
-      padding: 10px;
-      margin-top: 10px;
-      border: none;
-      border-radius: 8px;
-      color: white;
-      cursor: pointer;
-    }
-    #popup .pay { background: linear-gradient(135deg, #ff512f, #f09819); }
-    #popup .cancel { background: #333; }
   </style>
 </head>
 <body>
 
+  <!-- الهيدر -->
   <header>
     <h1>🎮 متجر الشحن</h1>
     <div>🛒</div>
   </header>
 
+  <!-- بانر -->
   <div class="banner">
     <h2>يمكنك الآن شحن جميع الألعاب</h2>
     <p>أفضل وأرخص موقع للشحن</p>
   </div>
 
-  <div class="section-title">الأكثر مبيعاً ⚡</div>
+  <!-- قسم الشحن المباشر -->
+  <div class="section-title">📦 الشحن المباشر</div>
   <div class="products">
     <div class="card">
       <img src="https://via.placeholder.com/150x100" alt="Free Fire">
       <h3>Free Fire</h3>
       <p>شحن جواهر بسرعة</p>
-      <button onclick="openPopup('Free Fire')">اشحن الآن</button>
+      <button onclick="goToOrder('Free Fire')">اشحن الآن</button>
     </div>
     <div class="card">
       <img src="https://via.placeholder.com/150x100" alt="PUBG">
       <h3>PUBG Mobile</h3>
       <p>شحن شدات بكل سهولة</p>
-      <button onclick="openPopup('PUBG Mobile')">اشحن الآن</button>
+      <button onclick="goToOrder('PUBG Mobile')">اشحن الآن</button>
     </div>
     <div class="card">
       <img src="https://via.placeholder.com/150x100" alt="COD">
       <h3>Call of Duty</h3>
       <p>شحن CP مباشر</p>
-      <button onclick="openPopup('Call of Duty')">اشحن الآن</button>
+      <button onclick="goToOrder('Call of Duty')">اشحن الآن</button>
     </div>
   </div>
 
-  <!-- شريط التنقل العصري -->
+  <!-- قسم التصميم -->
+  <div class="section-title">🎨 تصميم جرافيك</div>
+  <div class="products">
+    <div class="card">
+      <img src="https://via.placeholder.com/150x100" alt="تصميم شعار">
+      <h3>تصميم شعار</h3>
+      <p>شعارات احترافية جاهزة</p>
+      <button onclick="goToOrder('تصميم شعار')">اشتري الآن</button>
+    </div>
+    <div class="card">
+      <img src="https://via.placeholder.com/150x100" alt="تصميم غلاف">
+      <h3>تصميم غلاف</h3>
+      <p>أغلفة احترافية للتجار</p>
+      <button onclick="goToOrder('تصميم غلاف')">اشتري الآن</button>
+    </div>
+    <div class="card">
+      <img src="https://via.placeholder.com/150x100" alt="طلب خاص">
+      <h3>طلب تصميم خاص</h3>
+      <p>اطلب تصميم بمواصفاتك</p>
+      <button onclick="goToOrder('طلب تصميم خاص')">اطلب الآن</button>
+    </div>
+  </div>
+
+  <!-- شريط التنقل -->
   <div class="bottom-nav">
     <a href="#"><i>👤</i>حسابي</a>
     <a href="#"><i>💳</i>تغذية</a>
@@ -180,65 +170,11 @@
     <a href="#"><i>💬</i>الدعم</a>
   </div>
 
-  <!-- نافذة الطلب -->
-  <div id="popup">
-    <div class="box">
-      <h3 style="margin-top:0; text-align:center;">📝 تفاصيل الطلب</h3>
-      <input id="name" type="text" placeholder="الاسم">
-      <input id="phone" type="text" placeholder="رقم التواصل">
-      <input id="gameid" type="text" placeholder="الأيدي">
-      <button class="pay" onclick="sendToWhatsApp()">التقدم للدفع</button>
-      <button class="cancel" onclick="closePopup()">إلغاء</button>
-    </div>
-  </div>
-
   <script>
-    let selectedProduct = "";
-
-    function openPopup(product) {
-      selectedProduct = product;
-      document.getElementById("popup").style.display = "flex";
-    }
-    function closePopup() {
-      document.getElementById("popup").style.display = "none";
-    }
-
-    function sendToWhatsApp() {
-      let name = document.getElementById("name").value;
-      let phone = document.getElementById("phone").value;
-      let gameid = document.getElementById("gameid").value;
-
-      if (!name || !phone || !gameid) {
-        alert("من فضلك املأ جميع الحقول!");
-        return;
-      }
-
-      let orders = JSON.parse(localStorage.getItem("orders")) || [];
-      let orderId = "ORD-" + (orders.length + 1);
-
-      orders.push({
-        id: orderId,
-        product: selectedProduct,
-        name: name,
-        phone: phone,
-        gameid: gameid,
-        date: new Date().toLocaleString()
-      });
-      localStorage.setItem("orders", JSON.stringify(orders));
-
-      let message = `📦 طلب جديد:
-🆔 رقم الطلب: ${orderId}
-🛒 المنتج: ${selectedProduct}
-👤 الاسم: ${name}
-📞 رقم التواصل: ${phone}
-🎮 الأيدي: ${gameid}`;
-
-      let url = `https://wa.me/message/D6U5UW6XZE3ZN1?text=${encodeURIComponent(message)}`;
-      window.open(url, "_blank");
-
-      closePopup();
+    function goToOrder(product) {
+      window.location.href = `order.html?product=${encodeURIComponent(product)}`;
     }
   </script>
 
 </body>
-      </html>
+    </html>
