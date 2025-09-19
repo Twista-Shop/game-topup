@@ -4,56 +4,85 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Twista Store</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.rtl.min.css" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css">
 </head>
 <body>
 
-  <!-- شريط التنقل -->
-  <header class="navbar">
-    <div class="logo">Twista Store</div>
-    <nav>
-      <ul>
-        <li><a href="index.html">الرئيسية</a></li>
-        <li><a href="#categories">الأقسام</a></li>
-        <li><a href="order.html">طلباتي</a></li>
-      </ul>
-    </nav>
-  </header>
+<!-- الهيدر -->
+<header class="header d-flex align-items-center justify-content-between px-3 py-2 shadow-sm bg-white">
+  <div class="cart position-relative">
+    <i class="bi bi-cart2 fs-4"></i>
+    <span class="count">0</span>
+  </div>
+  <div class="d-flex align-items-center gap-2">
+    <div class="currency">🇸🇩 SDG</div>
+    <i class="bi bi-search fs-5"></i>
+  </div>
+  <div class="logo">
+    <img src="images/logo.png" alt="Twista Store" height="30">
+  </div>
+</header>
 
-  <!-- قسم العنوان -->
-  <section class="hero">
-    <h1>الشحن المباشر</h1>
-  </section>
+<!-- بانر -->
+<section class="banner my-3 text-center">
+  <img src="images/banner.jpg" class="img-fluid rounded" alt="banner">
+</section>
 
-  <!-- الأقسام -->
-  <section id="categories" class="categories">
-    <h2>الأقسام</h2>
-    <div class="grid">
-      <div class="card">
-        <img src="images/pubg.jpg" alt="Pubg Mobile">
-        <h3>Pubg Mobile</h3>
-        <a href="order.html" class="btn">إشحن الآن</a>
-      </div>
+<!-- زر القسم -->
+<div class="container text-center my-3">
+  <button class="btn btn-primary rounded-pill px-4">الشحن المباشر</button>
+</div>
 
-      <div class="card">
-        <img src="images/freefire.jpg" alt="FreeFire">
-        <h3>Free Fire</h3>
-        <a href="order.html" class="btn">إشحن الآن</a>
-      </div>
-
-      <div class="card">
-        <img src="images/cod.jpg" alt="Call of Duty">
-        <h3>Call Of Duty</h3>
-        <a href="order.html" class="btn">إشحن الآن</a>
-      </div>
-
-      <div class="card">
-        <img src="images/design.jpg" alt="تصميم جرافيك">
-        <h3>تصميم جرافيك</h3>
-        <a href="order.html" class="btn">أطلب الآن</a>
+<!-- المنتجات -->
+<section class="products container my-4">
+  <div class="row g-3">
+    <div class="col-6">
+      <div class="product-card text-center p-2 rounded shadow-sm">
+        <img src="images/pubg.jpg" class="img-fluid rounded" alt="Pubg">
+        <h6 class="mt-2">Pubg Mobile</h6>
       </div>
     </div>
-  </section>
+    <div class="col-6">
+      <div class="product-card text-center p-2 rounded shadow-sm">
+        <img src="images/freefire.jpg" class="img-fluid rounded" alt="FreeFire">
+        <h6 class="mt-2">FreeFire</h6>
+      </div>
+    </div>
+    <div class="col-6">
+      <div class="product-card text-center p-2 rounded shadow-sm">
+        <img src="images/cod.jpg" class="img-fluid rounded" alt="Call of Duty">
+        <h6 class="mt-2">Call Of Duty</h6>
+      </div>
+    </div>
+    <div class="col-6">
+      <div class="product-card text-center p-2 rounded shadow-sm">
+        <img src="images/diamond.jpg" class="img-fluid rounded" alt="FreeFire Level">
+        <h6 class="mt-2">مستوى فري فاير</h6>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- شريط التنقل السفلي -->
+<nav class="bottom-nav d-flex justify-content-around align-items-center py-2 bg-white shadow-lg fixed-bottom">
+  <a href="#" class="text-center">
+    <i class="bi bi-list"></i><br><small>القائمة</small>
+  </a>
+  <a href="#" class="text-center">
+    <i class="bi bi-house-door-fill"></i><br><small>الرئيسية</small>
+  </a>
+  <a href="#" class="text-center">
+    <i class="bi bi-box-arrow-in-right"></i><br><small>تسجيل</small>
+  </a>
+  <a href="#" class="text-center">
+    <i class="bi bi-bag-check"></i><br><small>طلباتي</small>
+  </a>
+  <a href="#" class="text-center">
+    <i class="bi bi-chat-dots"></i><br><small>الدعم</small>
+  </a>
+</nav>
 
 </body>
-</html>
+  </html>
